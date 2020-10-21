@@ -1,17 +1,12 @@
 <template>
-  <li v-on:click="handleClick">{{character.name}}</li>
+  <option :value='character'>{{character.name}}</option>
 </template>
 
 <script>
 import {eventBus} from '@/main.js'
 export default {
     name: 'character-details',
-    props: ['character'],
-    methods: {
-        handleClick() {
-            eventBus.$emit('character-selected', this.character)
-        }
-    }
+    props: ['character']
 }
 </script>
 

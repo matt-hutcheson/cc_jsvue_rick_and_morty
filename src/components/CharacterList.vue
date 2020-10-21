@@ -1,8 +1,9 @@
 <template>
   <article>
-      <ul>
-          <character-details v-for="(character) in characters" :character="character" :key="character.id"></character-details>
-      </ul>
+      <select v-on:change="handleSelect" v-model="selectedCharacter">
+        <option value="" disabled selected>--Select Character--</option>
+        <character-details v-for="(character) in characters" :character="character" :key="character.id"></character-details>
+      </select>
   </article>
 </template>
 
@@ -14,6 +15,11 @@ export default {
   props: ['characters'],
   components: {
     "character-details": CharacterDetails
+  },
+  methods: {
+    handleSelect() {
+        eventBus.$emit('character-selected', this.selectedCharacter)
+    }
   }
 }
 </script>
