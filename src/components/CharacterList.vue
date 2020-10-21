@@ -9,12 +9,18 @@
 
 <script>
 import CharacterDetails from './CharacterDetails.vue'
+import {eventBus} from '@/main.js'
 
 export default {
   name: 'character-list',
   props: ['characters'],
   components: {
     "character-details": CharacterDetails
+  },
+  data() {
+    return {
+      selectedCharacter: null
+    }
   },
   methods: {
     handleSelect() {
